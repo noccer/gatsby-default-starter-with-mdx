@@ -9,15 +9,22 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `blog`,
+        path: `${__dirname}/src/blog`,
       },
     },
     {
+      resolve: 'gatsby-plugin-page-creator',
+      options: {
+        path: `${__dirname}/src`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/src/blog`,
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     `gatsby-transformer-remark`,
@@ -37,14 +44,8 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-typescript-checker`,
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-      },
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
