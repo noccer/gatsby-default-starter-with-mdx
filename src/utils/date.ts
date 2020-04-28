@@ -1,6 +1,6 @@
 import format from 'date-fns/format';
 
-const DDMMYYYformat = 'DD-MM-YYYY';
+const DDMMYYYformat = 'dd-MM-yyyy';
 
 export const formatDateDDMMYYYY = (backendDate: string) => {
   const date = new Date(backendDate);
