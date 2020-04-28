@@ -1,16 +1,40 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import BlogItem, { Mdx } from '../../templates/BlogItem';
+import { graphql, Link } from 'gatsby';
+import { BlogItemProps } from '../../templates/blogPostTemplate';
+import { formatDateDDMMYYYY } from '../../utils/date';
 
-const BlogOverviewList = ({ data }: any) => {
+const BlogPreview: React.FC<BlogItemProps> = ({
+  frontmatter: { title, date },
+}) => {
+  const formattedDate = formatDateDDMMYYYY(date);
+  return (
+    <div>
+      <h3>{title}</h3>
+      <p>{formattedDate}</p>
+    </div>
+  );
+};
+
+const BlogOverviewList = ({
+  data,
+}: {
+  data: {
+    allMdx: {
+      nodes: BlogItemProps[];
+    };
+  };
+}) => {
   console.log('BlogOverviewList', { data });
+  const { nodes: blogPosts } = data.allMdx;
 
   return (
-    <>
-      {data.allMdx.nodes.map((node: Mdx) => {
-        return <BlogItem key={node.frontmatter.path} {...node} />;
-      })}
-    </>
+    <div>
+      {blogPosts.map((post: BlogItemProps) => (
+        <Link key={post.frontmatter.path} to={post.frontmatter.path}>
+          <BlogPreview {...post} />
+        </Link>
+      ))}
+    </div>
   );
 };
 
