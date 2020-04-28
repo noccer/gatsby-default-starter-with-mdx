@@ -17,6 +17,7 @@ const Blog = () => {
             <p>Here are the blog posts:</p>
             <main>
               <BlogOverviewList data={data} />
+              {/* TODO - only pass in paths, then use StaticQuery inside BlogItem */}
             </main>
           </Layout>
         );
