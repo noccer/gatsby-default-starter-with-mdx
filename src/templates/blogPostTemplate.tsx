@@ -12,7 +12,7 @@ export interface BlogItemProps {
   body: string;
 }
 
-interface PageContext {
+interface BlogPageContext {
   pageContext: {
     body: any;
     title: string;
@@ -20,9 +20,8 @@ interface PageContext {
   };
 }
 
-function blogTemplate(data: PageContext) {
-  console.log({ data });
-  const { date, title, body } = data.pageContext;
+function blogTemplate(blog: BlogPageContext) {
+  const { date, title, body } = blog.pageContext;
 
   return (
     <Layout>

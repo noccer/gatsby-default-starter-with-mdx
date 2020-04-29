@@ -6,7 +6,7 @@ import { formatDateDDMMYYYY } from '../../utils/date';
 const BlogPreview: React.FC<BlogItemProps> = ({
   frontmatter: { title, date },
 }) => {
-  const formattedDate = formatDateDDMMYYYY(date);
+  const formattedDate = formatDateDDMMYYYY(date); // TODO: we can actually get the backend to format this correctly when we request it
   return (
     <div>
       <h3>{title}</h3>
@@ -24,7 +24,6 @@ const BlogOverviewList = ({
     };
   };
 }) => {
-  console.log('BlogOverviewList', { data });
   const { nodes: blogPosts } = data.allMdx;
 
   return (
